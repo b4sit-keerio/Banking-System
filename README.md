@@ -42,7 +42,7 @@ Abdul Basit
 
 Java Developer & An Artificial Intelligence Student
 
-GitHub: Your GitHub Profile Link
+GitHub: http://www.github.com/in/abdul-basit-ai-engineer
 
 📄 License
 
