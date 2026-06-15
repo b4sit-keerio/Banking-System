@@ -2,7 +2,15 @@ import java.util.Scanner;
 
 class Account {
 
-    public int accountCreated = 0;
+    public Account (double accountNumber, String accountHolderName, double accountBalance){
+
+                    this.accountNumber = accountNumber;
+
+                    this.accountHolderName = accountHolderName;
+
+                    this.accountBalance = accountBalance;
+
+    }
 
     public double accountNumber;
 
@@ -25,13 +33,37 @@ class Account {
 }
 class SavingsAccount extends Account {
 
-    int [] savingAccounts = new int[1000];
+     public SavingsAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
+
+    super(accountNumber, accountHolderName, accountBalance);
+
+    this.interestRate = interestRate;
+
+    accountCreatedSavings++;
+
+    }
+
+    public double interestRate; 
+    
+    public static int accountCreatedSavings = 0;
 
 }
 
 class CurrentAccount extends Account {
 
-    int [] currentAccounts = new int[1000];
+     public CurrentAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
+
+    super(accountNumber, accountHolderName, accountBalance);
+
+    this.interestRate = interestRate;
+
+    accountCreatedCurrent++;
+
+    }
+
+    public double interestRate; 
+    
+    public static int accountCreatedCurrent = 0;
 
 }
 
@@ -56,10 +88,6 @@ public static void main (String [] args) {
 
       sc.nextLine();
 
-    //   SavingsAccount savingsaccount = new SavingsAccount();
-
-      Account ac = new Account();
-
       if(option == 1) {
 
          System.out.println("======Please tell me Which account you want to create======");
@@ -74,9 +102,31 @@ public static void main (String [] args) {
 
          if(optionForAccountCreation == 1) {
 
-              System.out.println(" Please enter the name of the Account holder : ");
+            System.out.println(" Please enter the name of the Account holder : ");
 
-             
+             String name = sc.nextLine();
+
+             System.out.println(" Please enter the Account Number of the Account holder : ");
+ 
+             double number = sc.nextInt();
+
+             sc.nextLine();
+
+             System.out.println(" Please enter the initial balance for the Account : ");
+
+             double balance = sc.nextInt();
+
+             sc.nextLine();
+
+             System.out.println(" Please enter the interest rate for the Saving Account : ");
+
+             double interest = sc.nextInt();
+
+             sc.nextLine();
+
+             SavingsAccount savingacc = new SavingsAccount(number, name, balance, interest);
+
+             System.out.println(" Number of the saving account created are : "+ SavingsAccount.accountCreatedSavings);
 
          }
 
