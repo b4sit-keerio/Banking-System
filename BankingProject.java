@@ -2,6 +2,12 @@ import java.util.Scanner;
 
 class Account {
 
+    public double accountNumber;
+
+    public String accountHolderName;
+
+    public double accountBalance;
+
     public Account (double accountNumber, String accountHolderName, double accountBalance){
 
                     this.accountNumber = accountNumber;
@@ -11,12 +17,6 @@ class Account {
                     this.accountBalance = accountBalance;
 
     }
-
-    public double accountNumber;
-
-    public String accountHolderName;
-
-    public double accountBalance;
 
     public void setBalance(double accountBalance) {
 
@@ -37,41 +37,33 @@ class SavingsAccount extends Account {
 
      public double interestRate; 
 
-    public static SavingsAccount arrayofsavingaccounts [] = new SavingsAccount[2];
+    public static SavingsAccount [] savingsAccounts = new SavingsAccount [2];
 
      public SavingsAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
 
     super(accountNumber, accountHolderName, accountBalance);
 
-    this.interestRate = interestRate;
- 
-    arrayofsavingaccounts[accountCreatedSavings].accountHolderName = accountHolderName;
+    this.interestRate = interestRate; 
 
-    arrayofsavingaccounts[accountCreatedSavings].accountNumber = accountNumber;
+    }
 
-    arrayofsavingaccounts[accountCreatedSavings].accountBalance = accountBalance;
+    public double amountWithInterest (double interestRate) {
 
-    arrayofsavingaccounts[accountCreatedSavings].interestRate = interestRate;
-
-    accountCreatedSavings++;
+          return accountBalance+(interestRate/100*accountBalance);
 
     }
 
 }
 
 class CurrentAccount extends Account {
-
-     public double interestRate; 
     
     public static int accountCreatedCurrent = 0;
 
-     public CurrentAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
+    public static CurrentAccount [] currentAccounts = new CurrentAccount[2];
+
+     public CurrentAccount (double accountNumber, String accountHolderName, double accountBalance){
 
     super(accountNumber, accountHolderName, accountBalance);
-
-    this.interestRate = interestRate;
-
-    accountCreatedCurrent++;
 
     }
 
@@ -81,8 +73,6 @@ class MainOfBankAccount {
 public static void main (String [] args) {
 
       Scanner sc = new Scanner(System.in);
-
-    //   Account acc = new Account(0, null, 0)
 
       do { 
     
@@ -138,18 +128,36 @@ public static void main (String [] args) {
 
              sc.nextLine();
 
-            SavingsAccount savingacc = new SavingsAccount(number, name, balance, interest);
+             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings] = new SavingsAccount(number, name, balance, interest);
 
-             System.out.println(" Number of the saving account created are : "+ SavingsAccount.accountCreatedSavings);
+             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountNumber = number;
 
-             System.out.println(" Savings Account Information : ");
+             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountHolderName = name;
+
+             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountBalance = balance; 
+             
+            SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].interestRate = interest; 
+
+             SavingsAccount.accountCreatedSavings++;
 
              if(SavingsAccount.accountCreatedSavings==2){
 
-             for(int i=0;i<savingacc.arrayofsavingaccounts.length;i++){
+                System.out.println(" Number of the Savings Accounts created are : "+ SavingsAccount.accountCreatedSavings);
 
-                   System.out.println("Name "+savingacc.arrayofsavingaccounts[i].accountHolderName);
+                System.out.println(" Savings Accounts Information : ");
 
+             for(int i=0;i<2;i++){
+
+                   System.out.println("Name  : "+SavingsAccount.savingsAccounts[i].accountHolderName);
+
+                   System.out.println("Account Number  : "+SavingsAccount.savingsAccounts[i].accountNumber);
+
+                   System.out.println("Savings Account Balance  : "+SavingsAccount.savingsAccounts[i].accountBalance);
+
+                   System.out.print("Savings Account Balance Including the Interest  : ");
+
+                   System.out.println(SavingsAccount.savingsAccounts[i].amountWithInterest (SavingsAccount.savingsAccounts[i].interestRate));
+                   
              }
 
             }
@@ -172,17 +180,35 @@ public static void main (String [] args) {
 
              double balance = sc.nextInt();
 
-             sc.nextLine();
+             sc.nextLine(); 
 
-            //  System.out.println(" Please enter the interest rate for the Current Account : ");
+             CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent] = new CurrentAccount(number, name, balance);
 
-            //  double interest = sc.nextInt();
+             CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountNumber = number;
 
-            //  sc.nextLine();
+             CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountHolderName = name;
 
-             CurrentAccount currentacc = new CurrentAccount(number, name, balance, 0.0);
+             CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountBalance = balance;
 
-            //  System.out.println(" Number of the saving account created are : "+ SavingsAccount.accountCreatedSavings);
+             CurrentAccount.accountCreatedCurrent++;
+
+             if(CurrentAccount.accountCreatedCurrent==2){
+
+                System.out.println(" Number of the Current account created are : "+ CurrentAccount.accountCreatedCurrent);
+
+                System.out.println(" Current Accounts Information : ");
+
+             for(int i=0;i<2;i++){
+
+                   System.out.println("Name  : "+ CurrentAccount.currentAccounts[i].accountHolderName);
+
+                   System.out.println("Account Number  : "+CurrentAccount.currentAccounts[i].accountNumber);
+
+                   System.out.println("Current Account Balance  : "+CurrentAccount.currentAccounts[i].accountBalance);
+                   
+             }
+
+            }
 
          }
 
@@ -194,7 +220,7 @@ public static void main (String [] args) {
 
       }
 
-      } while (SavingsAccount.accountCreatedSavings!=3&&CurrentAccount.accountCreatedCurrent!=3);
+      } while (SavingsAccount.accountCreatedSavings!=2||CurrentAccount.accountCreatedCurrent!=2);
 
 }
 
