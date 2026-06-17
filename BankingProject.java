@@ -74,6 +74,20 @@ public static void main (String [] args) {
 
       Scanner sc = new Scanner(System.in);
 
+      String name = null;
+
+      double number = 0.0;
+
+      double balance = 0.0;
+
+      double interest = 0.0;
+
+      double amountForDeposit = 0.0;
+
+      double accountNumberForDeposit = 0.0;
+
+      int accountOptionForDeposit = 0;
+
       do { 
     
       System.out.println("======Please select any option from the given menu======");
@@ -88,11 +102,15 @@ public static void main (String [] args) {
 
       System.out.println("5. Transaction History ");
 
+      System.out.println("0. Exit  ");
+
       int option = sc.nextInt();
 
       sc.nextLine();
 
       if(option == 1) {
+
+         System.out.println("======Dear Customer you are creating an Account=====");
 
          System.out.println("======Please tell me Which account you want to create======");
          
@@ -106,25 +124,27 @@ public static void main (String [] args) {
 
          if(optionForAccountCreation == 1) {
 
+            System.out.println("======Dear Customer you are creating a Savings Account=====");
+
             System.out.println(" Please enter the name of the Account holder : ");
 
-             String name = sc.nextLine();
+              name = sc.nextLine();
 
              System.out.println(" Please enter the Account Number of the Account holder : ");
  
-             double number = sc.nextInt();
+              number = sc.nextDouble();
 
              sc.nextLine();
 
              System.out.println(" Please enter the initial balance for the Account : ");
 
-             double balance = sc.nextInt();
+              balance = sc.nextDouble();
 
              sc.nextLine();
 
              System.out.println(" Please enter the interest rate for the Saving Account : ");
 
-             double interest = sc.nextInt();
+              interest = sc.nextDouble();
 
              sc.nextLine();
 
@@ -162,23 +182,27 @@ public static void main (String [] args) {
 
             }
 
+            System.out.println("====== Dear Customer your Account has Created =====");
+
          }
 
          else if(optionForAccountCreation == 2) {
 
+            System.out.println("======Dear Customer you are creating a Current Account=====");
+
             System.out.println(" Please enter the name of the Account holder : ");
 
-             String name = sc.nextLine();
+              name = sc.nextLine();
 
              System.out.println(" Please enter the Account Number of the Account holder : ");
  
-             double number = sc.nextInt();
+              number = sc.nextDouble();
 
              sc.nextLine();
 
              System.out.println(" Please enter the initial balance for the Account : ");
 
-             double balance = sc.nextInt();
+              balance = sc.nextDouble();
 
              sc.nextLine(); 
 
@@ -215,6 +239,90 @@ public static void main (String [] args) {
          else {
 
               System.out.println("  You have an Invalid choice   ");
+
+         }
+
+      }
+
+      else if (option==2) {
+
+         System.out.println("Please enter the Account Type for depositing an amount  ");
+
+         System.out.println("1. Savings Account  ");
+         
+         System.out.println("2. Current Account  ");
+
+         accountOptionForDeposit = sc.nextInt();
+
+         if(accountOptionForDeposit==1) {
+
+         System.out.println("Please enter the Amount you want to deposit  ");
+
+         amountForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+
+         System.out.println("Please enter the Account number for depositing an amount  ");
+
+         accountNumberForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+
+         for(int i=0;i<SavingsAccount.accountCreatedSavings;i++){
+
+               if(accountNumberForDeposit==SavingsAccount.savingsAccounts[i].accountNumber) {
+
+                   SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance+amountForDeposit;
+
+                   break;
+
+               }
+
+               else {
+
+                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+
+               }
+
+         }
+
+         System.out.println(" The New Balance Is "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
+
+         }
+
+         else if(accountOptionForDeposit==2) {
+
+         System.out.println("Please enter the Amount you want to deposit  ");
+
+         amountForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+
+         System.out.println("Please enter the Account number for depositing an amount  ");
+
+         accountNumberForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+
+         for(int i=0;i<CurrentAccount.accountCreatedCurrent;i++){
+
+               if(accountNumberForDeposit==CurrentAccount.currentAccounts[i].accountNumber) {
+
+                   CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance+amountForDeposit;
+
+                   break;
+
+               }
+
+               else {
+
+                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+
+               }
+
+         }
+
+         System.out.println(" The New Balance is "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
 
          }
 
