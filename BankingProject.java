@@ -37,7 +37,7 @@ class SavingsAccount extends Account {
 
      public double interestRate; 
 
-    public static SavingsAccount [] savingsAccounts = new SavingsAccount [2];
+    public static SavingsAccount [] savingsAccounts = new SavingsAccount [10];
 
      public SavingsAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
 
@@ -59,7 +59,7 @@ class CurrentAccount extends Account {
     
     public static int accountCreatedCurrent = 0;
 
-    public static CurrentAccount [] currentAccounts = new CurrentAccount[2];
+    public static CurrentAccount [] currentAccounts = new CurrentAccount[10];
 
      public CurrentAccount (double accountNumber, String accountHolderName, double accountBalance){
 
@@ -88,6 +88,14 @@ public static void main (String [] args) {
 
       int accountOptionForDeposit = 0;
 
+      double amountForWithdraw = 0.0;
+
+      double accountNumberForWithdraw = 0.0;
+
+      int accountOptionForWithdraw = 0;
+
+      int option = -1;
+
       do { 
     
       System.out.println("======Please select any option from the given menu======");
@@ -104,7 +112,7 @@ public static void main (String [] args) {
 
       System.out.println("0. Exit  ");
 
-      int option = sc.nextInt();
+      option = sc.nextInt();
 
       sc.nextLine();
 
@@ -160,13 +168,13 @@ public static void main (String [] args) {
 
              SavingsAccount.accountCreatedSavings++;
 
-             if(SavingsAccount.accountCreatedSavings==2){
+             if(SavingsAccount.accountCreatedSavings==10){
 
                 System.out.println(" Number of the Savings Accounts created are : "+ SavingsAccount.accountCreatedSavings);
 
                 System.out.println(" Savings Accounts Information : ");
 
-             for(int i=0;i<2;i++){
+             for(int i=0;i<10;i++){
 
                    System.out.println("Name  : "+SavingsAccount.savingsAccounts[i].accountHolderName);
 
@@ -216,13 +224,13 @@ public static void main (String [] args) {
 
              CurrentAccount.accountCreatedCurrent++;
 
-             if(CurrentAccount.accountCreatedCurrent==2){
+             if(CurrentAccount.accountCreatedCurrent==10){
 
                 System.out.println(" Number of the Current account created are : "+ CurrentAccount.accountCreatedCurrent);
 
                 System.out.println(" Current Accounts Information : ");
 
-             for(int i=0;i<2;i++){
+             for(int i=0;i<10;i++){
 
                    System.out.println("Name  : "+ CurrentAccount.currentAccounts[i].accountHolderName);
 
@@ -286,7 +294,7 @@ public static void main (String [] args) {
 
          }
 
-         System.out.println(" The New Balance Is "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
+         System.out.println(" The New Balance is "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
 
          }
 
@@ -328,7 +336,127 @@ public static void main (String [] args) {
 
       }
 
-      } while (SavingsAccount.accountCreatedSavings!=2||CurrentAccount.accountCreatedCurrent!=2);
+      else if (option==3) {
+
+         System.out.println("Please enter the Account Type for Withdraw an amount  ");
+
+         System.out.println("1. Savings Account  ");
+         
+         System.out.println("2. Current Account  ");
+
+         accountOptionForWithdraw = sc.nextInt();
+
+         if(accountOptionForWithdraw==1) {
+
+         System.out.println("Please enter the Amount you want to WithDraw  ");
+
+         amountForWithdraw = sc.nextDouble();
+
+         sc.nextLine();
+
+         System.out.println("Please enter the Account number for Withdraw an amount  ");
+
+         accountNumberForWithdraw = sc.nextDouble();
+
+         sc.nextLine();
+
+         for(int i=0;i<SavingsAccount.accountCreatedSavings;i++){
+
+               if(accountNumberForWithdraw==SavingsAccount.savingsAccounts[i].accountNumber) {
+
+                  if(SavingsAccount.savingsAccounts[i].accountBalance>=amountForWithdraw){
+
+              SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance-amountForWithdraw;
+
+                   break;
+
+                  }
+
+                  else {
+
+                        System.out.println(" Dear Customer you are entering Wrong Amount for Withdraw ");
+
+                        break;
+
+                  }
+
+               }
+
+               else {
+
+                    if(i==SavingsAccount.accountCreatedSavings-1){
+
+                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+
+                  break;
+
+                  }
+
+               }
+
+         }
+
+         System.out.println(" The New Balance is "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
+
+         }
+
+         else if(accountOptionForWithdraw==2) {
+
+         System.out.println("Please enter the Amount you want to WithDraw  ");
+
+         amountForWithdraw = sc.nextDouble();
+
+         sc.nextLine();
+
+         System.out.println("Please enter the Account number for Withdraw an amount  ");
+
+         accountNumberForWithdraw = sc.nextDouble();
+
+         sc.nextLine();
+
+         for(int i=0;i<CurrentAccount.accountCreatedCurrent;i++){
+
+               if(accountNumberForDeposit==CurrentAccount.currentAccounts[i].accountNumber) {
+
+                  if(CurrentAccount.currentAccounts[i].accountBalance>=amountForWithdraw){
+                     
+               CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance-amountForWithdraw;
+
+                   break;
+
+                  }
+
+                  else {
+
+                     System.out.println(" Dear Customer you are entering Wrong Amount for Withdraw ");
+
+                     break;
+
+                  }
+                   
+               }
+
+               else {
+
+                  if(i==CurrentAccount.accountCreatedCurrent-1){
+
+                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+
+                  break;
+
+                  }
+
+               }
+
+         }
+
+         System.out.println(" The New Balance is "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
+
+         }
+
+      }
+
+      } while (option!=0);
 
 }
 
