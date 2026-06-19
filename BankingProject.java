@@ -49,7 +49,7 @@ class SavingsAccount extends Account {
 
     public double amountWithInterest (double interestRate) {
 
-          return accountBalance+(interestRate/100*accountBalance);
+          return (this.accountBalance+((interestRate/100)*this.accountBalance));
 
     }
 
@@ -95,6 +95,8 @@ public static void main (String [] args) {
       int accountOptionForWithdraw = 0;
 
       int option = -1;
+
+      int accountNumberForAmountCheck = -1;
 
       do { 
     
@@ -166,7 +168,9 @@ public static void main (String [] args) {
              
             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].interestRate = interest; 
 
-             SavingsAccount.accountCreatedSavings++;
+            SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountBalance = SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].amountWithInterest (SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].interestRate);
+
+            SavingsAccount.accountCreatedSavings++;
 
              if(SavingsAccount.accountCreatedSavings==10){
 
@@ -184,7 +188,7 @@ public static void main (String [] args) {
 
                    System.out.print("Savings Account Balance Including the Interest  : ");
 
-                   System.out.println(SavingsAccount.savingsAccounts[i].amountWithInterest (SavingsAccount.savingsAccounts[i].interestRate));
+                   System.out.println(SavingsAccount.savingsAccounts[i].accountBalance);
                    
              }
 
@@ -453,6 +457,36 @@ public static void main (String [] args) {
          System.out.println(" The New Balance is "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
 
          }
+
+      }
+
+      else if (option == 4) {
+
+      System.out.println("Please enter your account Number for checking your Account balance ");
+
+      accountNumberForAmountCheck = sc.nextInt();
+
+      sc.nextLine();
+
+      for (int i = 0; i < (SavingsAccount.accountCreatedSavings+CurrentAccount.accountCreatedCurrent); i++) {
+         
+         if(accountNumberForAmountCheck==SavingsAccount.savingsAccounts[i].accountNumber){
+
+               System.out.println("Your Account Balance is : "+SavingsAccount.savingsAccounts[i].accountBalance);
+
+               break;
+
+         }
+
+         else if(accountNumberForAmountCheck==CurrentAccount.currentAccounts[i].accountNumber){
+
+               System.out.println("Your Account Balance is : "+CurrentAccount.currentAccounts[i].accountBalance);
+
+               break;
+
+         }
+
+      }
 
       }
 
