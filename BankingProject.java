@@ -39,6 +39,10 @@ class SavingsAccount extends Account {
 
     public static SavingsAccount [] savingsAccounts = new SavingsAccount [10];
 
+    int savingsAccountTransactions = 0;
+
+    double [] accountsTransactionsSavings  = new double [100];
+
      public SavingsAccount (double accountNumber, String accountHolderName, double accountBalance,double interestRate){
 
     super(accountNumber, accountHolderName, accountBalance);
@@ -59,7 +63,11 @@ class CurrentAccount extends Account {
     
     public static int accountCreatedCurrent = 0;
 
+    int currentAccountTransactions = 0;
+
     public static CurrentAccount [] currentAccounts = new CurrentAccount[10];
+
+    double [] accountsTransactionsCurrent  = new double [100];
 
      public CurrentAccount (double accountNumber, String accountHolderName, double accountBalance){
 
@@ -97,6 +105,8 @@ public static void main (String [] args) {
       int option = -1;
 
       int accountNumberForAmountCheck = -1;
+
+      int accountNumberForTransactionHistory = -1;
 
       do { 
     
@@ -170,6 +180,10 @@ public static void main (String [] args) {
 
             SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountBalance = SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].amountWithInterest (SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].interestRate);
 
+            SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountsTransactionsSavings[SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions] = +balance;
+
+            SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions++;
+
             SavingsAccount.accountCreatedSavings++;
 
              if(SavingsAccount.accountCreatedSavings==10){
@@ -225,6 +239,10 @@ public static void main (String [] args) {
              CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountHolderName = name;
 
              CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountBalance = balance;
+
+              CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountsTransactionsCurrent[CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions] = +balance;
+
+              CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions++;
 
              CurrentAccount.accountCreatedCurrent++;
 
@@ -487,6 +505,41 @@ public static void main (String [] args) {
          }
 
       }
+
+      }
+
+      else if (option == 5){
+                
+         System.out.println("Please enter your Account Number for checking your Account Transactions history ");
+
+         accountNumberForTransactionHistory = sc.nextInt();
+
+         sc.nextLine();
+
+          for (int i = 0; i < (SavingsAccount.accountCreatedSavings+CurrentAccount.accountCreatedCurrent); i++) {
+         
+         if(accountNumberForTransactionHistory==SavingsAccount.savingsAccounts[i].accountNumber){
+
+               for(int k=0;k<SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
+
+               System.out.println(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
+
+            }
+
+         }
+
+         else if(accountNumberForTransactionHistory==CurrentAccount.currentAccounts[i].accountNumber){
+
+            for(int k=0;k<CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
+
+               System.out.println(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
+
+            }
+              
+         }
+
+      }
+      
 
       }
 
