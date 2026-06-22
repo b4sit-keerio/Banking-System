@@ -108,6 +108,8 @@ public static void main (String [] args) {
 
       int accountNumberForTransactionHistory = -1;
 
+      int accountTypeForTransactionHistory = -1;
+
       do { 
     
       System.out.println("======Please select any option from the given menu======");
@@ -304,6 +306,10 @@ public static void main (String [] args) {
 
                    SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance+amountForDeposit;
 
+                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountsTransactionsSavings[SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions] = +balance;
+
+                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions++;
+
                    break;
 
                }
@@ -339,6 +345,10 @@ public static void main (String [] args) {
                if(accountNumberForDeposit==CurrentAccount.currentAccounts[i].accountNumber) {
 
                    CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance+amountForDeposit;
+
+                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountsTransactionsCurrent[CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions] = +balance;
+
+                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions++;
 
                    break;
 
@@ -388,7 +398,11 @@ public static void main (String [] args) {
 
                   if(SavingsAccount.savingsAccounts[i].accountBalance>=amountForWithdraw){
 
-              SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance-amountForWithdraw;
+                   SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance-amountForWithdraw;
+
+                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountsTransactionsSavings[SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].savingsAccountTransactions] = -balance;
+
+                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].savingsAccountTransactions++;
 
                    break;
 
@@ -442,7 +456,11 @@ public static void main (String [] args) {
 
                   if(CurrentAccount.currentAccounts[i].accountBalance>=amountForWithdraw){
                      
-               CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance-amountForWithdraw;
+                   CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance-amountForWithdraw;
+
+                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountsTransactionsCurrent[CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions] = -balance;
+
+                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions++;
 
                    break;
 
@@ -516,34 +534,74 @@ public static void main (String [] args) {
 
          sc.nextLine();
 
-          for (int i = 0; i < (SavingsAccount.accountCreatedSavings+CurrentAccount.accountCreatedCurrent); i++) {
+         System.out.println("Please enter your account type ");
+
+         System.out.println(" 1. Savings Account ");
+
+         System.out.println(" 2. Currrent Account ");
+
+         accountTypeForTransactionHistory = sc.nextInt();
+
+         sc.nextLine();
+
+         if (accountTypeForTransactionHistory==1){
+
+            for (int i = 0; i < SavingsAccount.accountCreatedSavings ; i++) {
          
-         if(accountNumberForTransactionHistory==SavingsAccount.savingsAccounts[i].accountNumber){
+                     if(accountNumberForTransactionHistory==SavingsAccount.savingsAccounts[i].accountNumber){
 
-               for(int k=0;k<SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
+                          for(int k=0;k<SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
 
-               System.out.println(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
+                                  if(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]>0){
+
+                                        System.out.println(" + "+ SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
+
+                  }
+
+                    else {
+
+                               System.out.println(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
+
+               }
 
             }
 
-         }
-
-         else if(accountNumberForTransactionHistory==CurrentAccount.currentAccounts[i].accountNumber){
-
-            for(int k=0;k<CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
-
-               System.out.println(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
-
-            }
-              
          }
 
       }
+
+         }
+
+         else if (accountTypeForTransactionHistory==2){
+
+      for (int i = 0; i < CurrentAccount.accountCreatedCurrent ; i++) {
+         
+                     if(accountNumberForTransactionHistory==CurrentAccount.currentAccounts[i].accountNumber){
+
+                          for(int k=0;k<CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
+
+                                  if(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]>0){
+                                        System.out.println(" + "+CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
+
+                  }
+
+                    else {
+
+                               System.out.println(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
+
+               }
+
+         }
+
+      }
+
+      } 
       
+   }
+   
+   }
 
-      }
-
-      } while (option!=0);
+}while (option!=0);
 
 }
 
