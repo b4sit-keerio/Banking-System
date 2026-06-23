@@ -288,13 +288,13 @@ public static void main (String [] args) {
 
          if(accountOptionForDeposit==1) {
 
-         System.out.println("Please enter the Amount you want to deposit  ");
+         System.out.println("Please enter the Amount you want to deposit in the Savings Account ");
 
          amountForDeposit = sc.nextDouble();
 
          sc.nextLine();
 
-         System.out.println("Please enter the Account number for depositing an amount  ");
+         System.out.println("Please enter the Account number for depositing an amount in the Savings Account ");
 
          accountNumberForDeposit = sc.nextDouble();
 
@@ -303,6 +303,8 @@ public static void main (String [] args) {
          for(int i=0;i<SavingsAccount.accountCreatedSavings;i++){
 
                if(accountNumberForDeposit==SavingsAccount.savingsAccounts[i].accountNumber) {
+
+                  //  SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings] = new SavingsAccount(number, name, balance, interest);
 
                    SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance+amountForDeposit;
 
@@ -328,13 +330,13 @@ public static void main (String [] args) {
 
          else if(accountOptionForDeposit==2) {
 
-         System.out.println("Please enter the Amount you want to deposit  ");
+         System.out.println("Please enter the Amount you want to deposit in the Current Account ");
 
          amountForDeposit = sc.nextDouble();
 
          sc.nextLine();
 
-         System.out.println("Please enter the Account number for depositing an amount  ");
+         System.out.println("Please enter the Account number for depositing an amount in the Current Account ");
 
          accountNumberForDeposit = sc.nextDouble();
 
@@ -343,6 +345,8 @@ public static void main (String [] args) {
          for(int i=0;i<CurrentAccount.accountCreatedCurrent;i++){
 
                if(accountNumberForDeposit==CurrentAccount.currentAccounts[i].accountNumber) {
+
+                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent] = new CurrentAccount(number, name, balance);
 
                    CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance+amountForDeposit;
 
@@ -550,7 +554,7 @@ public static void main (String [] args) {
          
                      if(accountNumberForTransactionHistory==SavingsAccount.savingsAccounts[i].accountNumber){
 
-                          for(int k=0;k<SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
+                          for(int k=0;k<=SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
 
                                   if(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]>0){
 
@@ -578,9 +582,10 @@ public static void main (String [] args) {
          
                      if(accountNumberForTransactionHistory==CurrentAccount.currentAccounts[i].accountNumber){
 
-                          for(int k=0;k<CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
+                          for(int k=0;k<=CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
 
                                   if(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]>0){
+
                                         System.out.println(" + "+CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
 
                   }
