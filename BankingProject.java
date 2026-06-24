@@ -308,9 +308,9 @@ public static void main (String [] args) {
 
                    SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance+amountForDeposit;
 
-                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].accountsTransactionsSavings[SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions] = +balance;
+                   SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[SavingsAccount.savingsAccounts[i].savingsAccountTransactions] = +amountForDeposit;
 
-                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings].savingsAccountTransactions++;
+                   SavingsAccount.savingsAccounts[i].savingsAccountTransactions++;
 
                    break;
 
@@ -350,9 +350,9 @@ public static void main (String [] args) {
 
                    CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance+amountForDeposit;
 
-                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountsTransactionsCurrent[CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions] = +balance;
+                   CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[CurrentAccount.currentAccounts[i].currentAccountTransactions] = +amountForDeposit;
 
-                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions++;
+                   CurrentAccount.currentAccounts[i].currentAccountTransactions++;
 
                    break;
 
@@ -404,9 +404,9 @@ public static void main (String [] args) {
 
                    SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance-amountForWithdraw;
 
-                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountsTransactionsSavings[SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].savingsAccountTransactions] = -balance;
+                   SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[SavingsAccount.savingsAccounts[i].savingsAccountTransactions] = -amountForWithdraw;
 
-                   SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].savingsAccountTransactions++;
+                   SavingsAccount.savingsAccounts[i].savingsAccountTransactions++;
 
                    break;
 
@@ -462,9 +462,9 @@ public static void main (String [] args) {
                      
                    CurrentAccount.currentAccounts[i].accountBalance =  CurrentAccount.currentAccounts[i].accountBalance-amountForWithdraw;
 
-                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].accountsTransactionsCurrent[CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions] = -balance;
+                   CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[CurrentAccount.currentAccounts[i].currentAccountTransactions] = -amountForWithdraw;
 
-                   CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent].currentAccountTransactions++;
+                   CurrentAccount.currentAccounts[i].currentAccountTransactions++;
 
                    break;
 
