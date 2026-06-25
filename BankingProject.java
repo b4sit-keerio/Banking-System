@@ -562,9 +562,9 @@ public static void main (String [] args) {
 
                   }
 
-                    else {
+                    else if(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]<0)  {
 
-                               System.out.println(SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
+                               System.out.println(" "+SavingsAccount.savingsAccounts[i].accountsTransactionsSavings[k]);
 
                }
 
@@ -590,9 +590,9 @@ public static void main (String [] args) {
 
                   }
 
-                    else {
+                    else if(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]<0) {
 
-                               System.out.println(CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
+                               System.out.println(" "+CurrentAccount.currentAccounts[i].accountsTransactionsCurrent[k]);
 
                }
 
