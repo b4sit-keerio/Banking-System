@@ -111,8 +111,16 @@ public static void main (String [] args) {
       int accountTypeForTransactionHistory = -1;
 
       do { 
-    
-      System.out.println("======Please select any option from the given menu======");
+         
+      System.out.println("====================================================");
+
+      System.out.println("\t\tBANKING SYSTEM");
+
+      System.out.println("====================================================");
+
+      System.out.println("\tSecure | Fast | Reliable Banking");
+
+      System.out.println("====================================================");
 
       System.out.println("1. Create an Account ");
 
@@ -126,19 +134,33 @@ public static void main (String [] args) {
 
       System.out.println("0. Exit  ");
 
+      System.out.println("====================================================");
+    
+      System.out.println("CHOOSE AN OPTION : ");
+
       option = sc.nextInt();
 
       sc.nextLine();
 
       if(option == 1) {
 
-         System.out.println("======Dear Customer you are creating an Account=====");
+         System.out.println("==========================================================");
 
-         System.out.println("======Please tell me Which account you want to create======");
+         System.out.println("\tDEAR CUSTOMER YOU ARE CREATING AN ACCOUNT");
+
+         System.out.println("==========================================================");
+
+         System.out.println("==========================================================");
+
+         System.out.println("\tDEAR CUSTOMER WHICH ACCOUNT YOU WANT TO CREATE");
+
+         System.out.println("==========================================================");
          
-         System.out.println("1. Saving Account ");
+         System.out.println("1. SAVINGS ACCOUNT ");
 
-         System.out.println("2. Current Account ");
+         System.out.println("2. CURRENT ACCOUNT ");
+
+         System.out.println("CHOOSE AN OPTION : ");
 
          int optionForAccountCreation = sc.nextInt();
 
@@ -146,25 +168,29 @@ public static void main (String [] args) {
 
          if(optionForAccountCreation == 1) {
 
-            System.out.println("======Dear Customer you are creating a Savings Account=====");
+         System.out.println("==========================================================");
 
-            System.out.println(" Please enter the name of the Account holder : ");
+         System.out.println("\tDEAR CUSTOMER YOU ARE CREATING A SAVINGS ACCOUNT");
+
+         System.out.println("==========================================================");
+
+            System.out.println(" PLEASE ENTER THE NAME OF AN ACCOUNT HOLDER : ");
 
               name = sc.nextLine();
 
-             System.out.println(" Please enter the Account Number of the Account holder : ");
+             System.out.println(" PLEASE ENTER AN ACCOUNT NUMBER : ");
  
               number = sc.nextDouble();
 
              sc.nextLine();
 
-             System.out.println(" Please enter the initial balance for the Account : ");
+             System.out.println(" PLEASE ENTER THE INITIAL BALANCE WHICH YOU WANT TO DEPOSIT : ");
 
               balance = sc.nextDouble();
 
              sc.nextLine();
 
-             System.out.println(" Please enter the interest rate for the Saving Account : ");
+             System.out.println(" PLEASE ENTER THE INTEREST RATE FOR YOUR ACCOUNT : ");
 
               interest = sc.nextDouble();
 
@@ -188,51 +214,45 @@ public static void main (String [] args) {
 
             SavingsAccount.accountCreatedSavings++;
 
-             if(SavingsAccount.accountCreatedSavings==10){
+            System.out.println("+----------------------------------------------+");
 
-                System.out.println(" Number of the Savings Accounts created are : "+ SavingsAccount.accountCreatedSavings);
+            System.out.println("|          ACCOUNT CREATED SUCCESSFULLY        |");
 
-                System.out.println(" Savings Accounts Information : ");
+            System.out.println("+----------------------------------------------+");
 
-             for(int i=0;i<10;i++){
+            System.out.println(" NAME  : "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountHolderName);
 
-                   System.out.println("Name  : "+SavingsAccount.savingsAccounts[i].accountHolderName);
+            System.out.println(" ACCOUNT NUMBER : "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountNumber);
 
-                   System.out.println("Account Number  : "+SavingsAccount.savingsAccounts[i].accountNumber);
+            System.out.println(" ACCOUNT BALANCE : "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
 
-                   System.out.println("Savings Account Balance  : "+SavingsAccount.savingsAccounts[i].accountBalance);
-
-                   System.out.print("Savings Account Balance Including the Interest  : ");
-
-                   System.out.println(SavingsAccount.savingsAccounts[i].accountBalance);
-                   
-             }
-
-            }
-
-            System.out.println("====== Dear Customer your Account has Created =====");
+            System.out.println(" ACCOUNT BALANCE INCLUDING INTEREST :"+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
 
          }
 
          else if(optionForAccountCreation == 2) {
 
-            System.out.println("======Dear Customer you are creating a Current Account=====");
+         System.out.println("==========================================================");
 
-            System.out.println(" Please enter the name of the Account holder : ");
+         System.out.println("\tDEAR CUSTOMER YOU ARE CREATING A CURRENT ACCOUNT");
+
+         System.out.println("==========================================================");
+
+            System.out.println(" PLEASE ENTER THE NAME OF AN ACCOUNT HOLDER : ");
 
               name = sc.nextLine();
 
-             System.out.println(" Please enter the Account Number of the Account holder : ");
+             System.out.println(" PLEASE ENTER AN ACCOUNT NUMBER : ");
  
               number = sc.nextDouble();
 
              sc.nextLine();
 
-             System.out.println(" Please enter the initial balance for the Account : ");
+             System.out.println(" PLEASE ENTER THE INITIAL BALANCE WHICH YOU WANT TO DEPOSIT : ");
 
               balance = sc.nextDouble();
 
-             sc.nextLine(); 
+             sc.nextLine();
 
              CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent] = new CurrentAccount(number, name, balance);
 
@@ -248,29 +268,27 @@ public static void main (String [] args) {
 
              CurrentAccount.accountCreatedCurrent++;
 
-             if(CurrentAccount.accountCreatedCurrent==10){
+            System.out.println("+----------------------------------------------+");
 
-                System.out.println(" Number of the Current account created are : "+ CurrentAccount.accountCreatedCurrent);
+            System.out.println("|          ACCOUNT CREATED SUCCESSFULLY        |");
 
-                System.out.println(" Current Accounts Information : ");
+            System.out.println("+----------------------------------------------+");
 
-             for(int i=0;i<10;i++){
+            System.out.println(" NAME  : "+ CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountHolderName);
 
-                   System.out.println("Name  : "+ CurrentAccount.currentAccounts[i].accountHolderName);
+            System.out.println(" ACCOUNT NUMBER  : "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountNumber);
 
-                   System.out.println("Account Number  : "+CurrentAccount.currentAccounts[i].accountNumber);
-
-                   System.out.println("Current Account Balance  : "+CurrentAccount.currentAccounts[i].accountBalance);
-                   
-             }
-
-            }
+            System.out.println(" ACCOUNT BALANCE  : "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
 
          }
 
          else {
 
-              System.out.println("  You have an Invalid choice   ");
+            System.out.println("+-------------------------------------------------+");
+
+            System.out.println("|                INVALID CHOICE                   |");
+
+            System.out.println("+-------------------------------------------------+");
 
          }
 
@@ -303,8 +321,6 @@ public static void main (String [] args) {
          for(int i=0;i<SavingsAccount.accountCreatedSavings;i++){
 
                if(accountNumberForDeposit==SavingsAccount.savingsAccounts[i].accountNumber) {
-
-                  //  SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings] = new SavingsAccount(number, name, balance, interest);
 
                    SavingsAccount.savingsAccounts[i].accountBalance = SavingsAccount.savingsAccounts[i].accountBalance+amountForDeposit;
 
