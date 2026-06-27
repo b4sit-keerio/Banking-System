@@ -296,27 +296,48 @@ public static void main (String [] args) {
 
       else if (option==2) {
 
-         System.out.println("Please enter the Account Type for depositing an amount  ");
+         System.out.println(" PLEASE ENTER THE ACCOUNT TYPE FOR DEPOSITING THE MONEY  ");
 
-         System.out.println("1. Savings Account  ");
+         System.out.println(" +-----------------------------------------------------+");
+
+         System.out.println(" 1. Savings Account  ");
          
-         System.out.println("2. Current Account  ");
+         System.out.println(" 2. Current Account  ");
+
+         System.out.println(" +-----------------------------------------------------+");
+
+         System.out.println(" CHOOSE AN OPTION : ");
 
          accountOptionForDeposit = sc.nextInt();
 
          if(accountOptionForDeposit==1) {
 
-         System.out.println("Please enter the Amount you want to deposit in the Savings Account ");
+         System.out.println(" PLEASE ENTER THE ACCOUNT NUMBER FOR DEPOSITING AN AMMOUNT ");
+
+         accountNumberForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+
+         System.out.println(" PLEASE ENTER THE AMOUNT YOU WANT TO DEPSOIT IN THE SAVINGS ACCOUNT ");
 
          amountForDeposit = sc.nextDouble();
 
          sc.nextLine();
 
-         System.out.println("Please enter the Account number for depositing an amount in the Savings Account ");
+         for (int i = 0; i < SavingsAccount.accountCreatedSavings; i++) {
 
-         accountNumberForDeposit = sc.nextDouble();
+            if(accountNumberForDeposit==SavingsAccount.savingsAccounts[i].accountNumber){
 
-         sc.nextLine();
+                  System.out.println(" NAME : "+ SavingsAccount.savingsAccounts[i].accountHolderName);
+
+                  System.out.println(" ACCOUNT NUMBER : "+SavingsAccount.savingsAccounts[i].accountNumber);
+
+                  System.out.println(" ACCOUNT BALANCE : "+SavingsAccount.savingsAccounts[i].accountBalance);
+
+            }
+
+             
+         }
 
          for(int i=0;i<SavingsAccount.accountCreatedSavings;i++){
 
@@ -332,31 +353,51 @@ public static void main (String [] args) {
 
                }
 
-               else {
+                     else {
 
-                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+                  System.out.println(" DEAR CUSTOMER YOU HAVE ENTERED INVALID ACCOUNT NUMBER ");
 
                }
 
          }
 
-         System.out.println(" The New Balance is "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
+         System.out.println(" THE MODIFIED BALANCE IS : "+SavingsAccount.savingsAccounts[SavingsAccount.accountCreatedSavings-1].accountBalance);
+
+            System.out.println("+-------------------------------------------------+");
+
+            System.out.println("|              TRANSACTION SUCCESSFULL            |");
+
+            System.out.println("+-------------------------------------------------+");
 
          }
 
          else if(accountOptionForDeposit==2) {
 
-         System.out.println("Please enter the Amount you want to deposit in the Current Account ");
+         System.out.println(" PLEASE ENTER THE ACCOUNT NUMBER FOR DEPOSITING AN AMOUNT ");
+
+         accountNumberForDeposit = sc.nextDouble();
+
+         sc.nextLine();
+         
+         System.out.println(" PLEASE ENTER THE AMOUNT WHICH YOU WANT TO DEPOSIT INTO CURRENT ACCOUNT ");
 
          amountForDeposit = sc.nextDouble();
 
          sc.nextLine();
 
-         System.out.println("Please enter the Account number for depositing an amount in the Current Account ");
+         for (int i = 0; i < CurrentAccount.accountCreatedCurrent; i++) {
 
-         accountNumberForDeposit = sc.nextDouble();
+            if(accountNumberForDeposit==CurrentAccount.currentAccounts[i].accountNumber){
 
-         sc.nextLine();
+                  System.out.println(" NAME : "+ CurrentAccount.currentAccounts[i].accountHolderName);
+
+                  System.out.println(" ACCOUNT NUMBER : "+CurrentAccount.currentAccounts[i].accountNumber);
+
+                  System.out.println(" ACCOUNT BALANCE : "+CurrentAccount.currentAccounts[i].accountBalance);
+
+            }
+             
+         }
 
          for(int i=0;i<CurrentAccount.accountCreatedCurrent;i++){
 
@@ -376,13 +417,19 @@ public static void main (String [] args) {
 
                else {
 
-                  System.out.println(" Dear Customer you have entered a Wrong Account number ");
+                  System.out.println(" DEAR CUSTOMER YOU HAVE ENTERED INVALID ACCOUNT NUMBER ");
 
                }
 
          }
 
-         System.out.println(" The New Balance is "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
+         System.out.println(" THE MODIFIED BALANCE IS  "+CurrentAccount.currentAccounts[CurrentAccount.accountCreatedCurrent-1].accountBalance);
+
+            System.out.println("+-------------------------------------------------+");
+
+            System.out.println("|              TRANSACTION SUCCESSFULL            |");
+
+            System.out.println("+-------------------------------------------------+");
 
          }
 
