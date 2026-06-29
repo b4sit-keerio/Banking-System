@@ -670,6 +670,8 @@ public static void main (String [] args) {
 
          sc.nextLine();
 
+         System.out.println("+-------------------------------------------------+");
+
          System.out.println(" CHOOSE AN OPTION ");
 
          System.out.println(" 1. Savings Account ");
