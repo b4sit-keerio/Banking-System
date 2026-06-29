@@ -613,7 +613,7 @@ public static void main (String [] args) {
 
       else if (option == 4) {
 
-      System.out.println("Please enter your account Number for checking your Account balance ");
+      System.out.println(" PLEASE ENTER AN ACCOUNT NUMBER FOR CHECKING AN ACCOUNT BALANCE ");
 
       accountNumberForAmountCheck = sc.nextInt();
 
@@ -623,7 +623,17 @@ public static void main (String [] args) {
          
          if(accountNumberForAmountCheck==SavingsAccount.savingsAccounts[i].accountNumber){
 
-               System.out.println("Your Account Balance is : "+SavingsAccount.savingsAccounts[i].accountBalance);
+               System.out.println("+-------------------------------------------------+");
+
+               System.out.println("|                 ACCOUNT DETAILS                 |");
+
+               System.out.println("+-------------------------------------------------+");
+
+               System.out.println(" NAME : "+SavingsAccount.savingsAccounts[i].accountHolderName);
+
+               System.out.println(" ACCOUNT NUMBER : "+SavingsAccount.savingsAccounts[i].accountNumber);
+
+               System.out.println(" ACCOUNT BALANCE : "+SavingsAccount.savingsAccounts[i].accountBalance);
 
                break;
 
@@ -631,7 +641,18 @@ public static void main (String [] args) {
 
          else if(accountNumberForAmountCheck==CurrentAccount.currentAccounts[i].accountNumber){
 
-               System.out.println("Your Account Balance is : "+CurrentAccount.currentAccounts[i].accountBalance);
+               
+               System.out.println("+-------------------------------------------------+");
+
+               System.out.println("|                 ACCOUNT DETAILS                 |");
+
+               System.out.println("+-------------------------------------------------+");
+
+               System.out.println(" NAME : "+CurrentAccount.currentAccounts[i].accountHolderName);
+
+               System.out.println(" ACCOUNT NUMBER : "+CurrentAccount.currentAccounts[i].accountNumber);
+
+               System.out.println(" ACCOUNT BALANCE : "+CurrentAccount.currentAccounts[i].accountBalance);
 
                break;
 
@@ -643,13 +664,13 @@ public static void main (String [] args) {
 
       else if (option == 5){
                 
-         System.out.println("Please enter your Account Number for checking your Account Transactions history ");
+         System.out.println(" PLEASE ENTER AN ACCOUNT NUMBER FOR CHECKING AN ACCOUNT's TRANSACTIONS HISTORY ");
 
          accountNumberForTransactionHistory = sc.nextInt();
 
          sc.nextLine();
 
-         System.out.println("Please enter your account type ");
+         System.out.println(" CHOOSE AN OPTION ");
 
          System.out.println(" 1. Savings Account ");
 
@@ -664,6 +685,19 @@ public static void main (String [] args) {
             for (int i = 0; i < SavingsAccount.accountCreatedSavings ; i++) {
          
                      if(accountNumberForTransactionHistory==SavingsAccount.savingsAccounts[i].accountNumber){
+
+                                   
+               System.out.println("+-------------------------------------------------+");
+ 
+               System.out.println("|               TRANSACTIONS HISTORY              |");
+
+               System.out.println("+-------------------------------------------------+");
+
+               System.out.println(" NAME : "+SavingsAccount.savingsAccounts[i].accountHolderName);
+
+               System.out.println(" ACCOUNT NUMBER : "+SavingsAccount.savingsAccounts[i].accountNumber);
+
+               System.out.println(" ACCOUNT BALANCE : "+SavingsAccount.savingsAccounts[i].accountBalance);
 
                           for(int k=0;k<=SavingsAccount.savingsAccounts[i].savingsAccountTransactions;k++){
 
@@ -692,6 +726,18 @@ public static void main (String [] args) {
       for (int i = 0; i < CurrentAccount.accountCreatedCurrent ; i++) {
          
                      if(accountNumberForTransactionHistory==CurrentAccount.currentAccounts[i].accountNumber){
+
+                           System.out.println("+-------------------------------------------------+");
+ 
+                           System.out.println("|               TRANSACTIONS HISTORY              |");
+
+                           System.out.println("+-------------------------------------------------+");
+
+                           System.out.println(" NAME : "+CurrentAccount.currentAccounts[i].accountHolderName);
+
+                           System.out.println(" ACCOUNT NUMBER : "+CurrentAccount.currentAccounts[i].accountNumber);
+
+                           System.out.println(" ACCOUNT BALANCE : "+CurrentAccount.currentAccounts[i].accountBalance);
 
                           for(int k=0;k<=CurrentAccount.currentAccounts[i].currentAccountTransactions;k++){
 
