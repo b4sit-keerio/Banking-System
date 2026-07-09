@@ -44,7 +44,7 @@ Abdul Basit
 
 Java Developer & An Artificial Intelligence Student
 
-GitHub: http://www.github.com/in/abdul-basit-ai-engineer
+GitHub:github.com/b4sit-keerio
 
 📄 License
 
